@@ -62,7 +62,7 @@ merge(mutate(base.r,Region=factor(Region,levels=regiones.ordenadas[-17])),
   geom_rect(aes(xmin=Fecha.de.Inicio, xmax=Fecha.de.Termino,ymin=-Inf, ymax=Inf),
             data=cuarentena %>% filter(Pos<=8) %>% 
               select(Region,Fecha.de.Inicio,Fecha.de.Termino) %>% distinct(),
-            fill="dodgerblue", alpha=I(0.1)) +
+            fill="lavender", alpha=I(0.4)) +
   geom_ribbon(aes(x=Fecha,ymin=P025,ymax=P975),fill="gray77",alpha=I(0.7)) +
   geom_line(aes(x=Fecha,y=P025),alpha=I(0.3)) +
   geom_line(aes(x=Fecha,y=P975),alpha=I(0.3)) +
@@ -83,7 +83,7 @@ merge(mutate(base.r,Region=factor(Region,levels=regiones.ordenadas[-17])),
   geom_rect(aes(xmin=Fecha.de.Inicio, xmax=Fecha.de.Termino,ymin=-Inf, ymax=Inf),
             data=cuarentena %>% filter(Pos>8) %>% 
               select(Region,Fecha.de.Inicio,Fecha.de.Termino) %>% distinct(),
-            fill="dodgerblue", alpha=I(0.1)) +
+            fill="lavender", alpha=I(0.4)) +
   geom_ribbon(aes(x=Fecha,ymin=P025,ymax=P975),fill="gray77",alpha=I(0.7)) +
   geom_line(aes(x=Fecha,y=P025),alpha=I(0.3)) +
   geom_line(aes(x=Fecha,y=P975),alpha=I(0.3)) +

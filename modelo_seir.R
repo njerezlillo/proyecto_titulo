@@ -132,7 +132,9 @@ rbind(modelo(estimaciones,Region="Metropolitana",fin=273)[,c(1,3,4)] %>%
         melt(id.vars="time"), 
       datos %>% filter(Region=="Metropolitana") %>% rename(time=Periodo.Infeccioso) %>%
         select(time,Nuevos.Confirmados) %>% 
-        melt(id.vars="time")) %>% mutate(time=as.Date("2020-03-03")+time) %>%
+        melt(id.vars="time")) %>% 
+  mutate(time=as.Date("2020-03-03")+time,
+         variable=factor(variable,c("Nuevos.Confirmados","E","I"))) %>%
   ggplot() + geom_line(aes(time,value,color=variable),size=1) + theme_classic() +
   theme(legend.position = "bottom",
         panel.background = element_rect(fill = "transparent"), # bg of the panel
@@ -140,9 +142,9 @@ rbind(modelo(estimaciones,Region="Metropolitana",fin=273)[,c(1,3,4)] %>%
         panel.grid.major = element_blank(), # get rid of major grid
         panel.grid.minor = element_blank(), # get rid of minor grid
         legend.background = element_rect(fill = "transparent")) + labs(x="Mes",y="") +
-  scale_color_discrete("",label=c("Número de Expuestos (Modelos)",
-                                  "Número de Infectados (Modelo)",
-                                  "Casos Confirmados Diarios (Empírico)")) +
+  scale_color_discrete("",label=c("Casos Confirmados Diarios (Empírico)",
+                                  "Número de Expuestos (Modelos)",
+                                  "Número de Infectados (Modelo)")) +
   scale_x_date(date_breaks = "1 month",date_labels = "%b",
                limits = as.Date(c("2020-03-03","2020-10-30"))) +
   guides(col = guide_legend(ncol = 1,byrow = TRUE,label.hjust=0.4))

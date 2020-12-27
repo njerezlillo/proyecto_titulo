@@ -68,7 +68,7 @@ paneles=
   mutate(Color="red")
 
 paneles[seq(2,nrow(paneles),2),"Color"]="blue"
-write.xlsx(paneles,"./DATABASES/segmentos.xlsx")
+#write.xlsx(paneles,"./DATABASES/segmentos.xlsx")
 ###############
 
 #detalle regiones
